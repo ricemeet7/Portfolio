@@ -1,0 +1,681 @@
+
+html {
+  font-size: 14px;
+}
+body{
+  background-color: rgb(245, 245, 245);
+}
+*{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+
+@media screen and (min-width: 768px) {
+  html {
+      font-size: 16px;
+  }
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: .5;
+  transition: all .3s;
+}
+
+.main-title {
+  display: block;
+  font-size: 2rem;
+}
+
+/* contents */
+.header,
+.footer {
+	max-width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+  padding-top: 20px;
+}
+.container{
+  width: 90%;
+  margin: 40px auto 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+h2{
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+h3{
+  font-size: 1.8rem;
+  color: skyblue;
+}
+
+/*==============================================
+　　　　　　gatefold
+===============================================*/
+.gatefold {
+	width: 100%;
+	height: 100%;
+}
+
+.gatefold::before,
+.gatefold::after {
+	content: '';
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100vh;
+	background: url(../img/pexels-ylanite-koppens-796602.jpg) top center no-repeat;
+	background-size: cover;
+	-webkit-transition: all 1s;
+	transition: all 1s;
+	z-index: 1;
+}
+
+.gatefold::before {
+	left: 0;
+	clip: rect(0px 50vw 100vh 0px);
+}
+
+.gatefold::after {
+	right: 0;
+	clip: rect(0px 100vw 100vh 50vw);
+}
+
+/* checkbox */
+.check {
+	display: none;
+}
+
+.switch {
+	position: fixed;
+	left: 0;
+	right: 0;
+	width: 300px;
+	height: 140px;
+	margin: auto;
+	font-size: 80px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	text-shadow: 5px 5px 10px rgba(0,0,0,.8);
+	color: #fff;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+	visibility: visible;
+	opacity: 1;
+	z-index: 2;
+}
+
+.switch.slide {
+	top: 10%;
+}
+.switch.slide::before {
+	content: 'slide';
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+
+.switch.fade {
+	top: 30%;
+}
+.switch.fade::before {
+	content: 'fade';
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+
+.switch.push {
+	top: 50%;
+}
+.switch.push::before {
+	content: 'push';
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+
+.switch.pull {
+	top: 70%;
+}
+.switch.pull::before {
+	content: 'pull';
+	-webkit-transition: all .5s;
+	transition: all .5s;
+}
+
+.check.slide:checked ~ .switch.slide::before,
+.check.fade:checked ~ .switch.fade::before,
+.check.push:checked ~ .switch.push::before,
+.check.pull:checked ~ .switch.pull::before {
+	content: 'click';
+	opacity: .3;
+}
+.check.slide:checked ~ .switch.push,
+.check.slide:checked ~ .switch.fade,
+.check.slide:checked ~ .switch.pull,
+.check.fade:checked ~ .switch.slide,
+.check.fade:checked ~ .switch.push,
+.check.fade:checked ~ .switch.pull,
+.check.push:checked ~ .switch.slide,
+.check.push:checked ~ .switch.fade,
+.check.push:checked ~ .switch.pull,
+.check.pull:checked ~ .switch.slide,
+.check.pull:checked ~ .switch.fade,
+.check.pull:checked ~ .switch.push {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.check.slide:checked ~ .gatefold::before {
+	-webkit-transform: translate3d(-550px,0,0);
+	transform: translate3d(-550px,0,0);
+}
+.check.slide:checked ~ .gatefold::after {
+	-webkit-transform: translate3d(550px,0,0);
+	transform: translate3d(550px,0,0);
+}
+
+.check.fade:checked ~ .gatefold::before {
+	-webkit-transform: translate3d(-550px,0,0);
+	transform: translate3d(-550px,0,0);
+	opacity: 0;
+}
+.check.fade:checked ~ .gatefold::after {
+	-webkit-transform: translate3d(550px,0,0);
+	transform: translate3d(550px,0,0);
+	opacity: 0;
+}
+
+.check.push ~ .gatefold::before,
+.check.pull ~ .gatefold::before {
+	-webkit-transform-origin: left center;
+	-ms-transform-origin: left center;
+	transform-origin: left center;
+}
+.check.push ~ .gatefold::after,
+.check.pull ~ .gatefold::after {
+	-webkit-transform-origin: right center;
+	-ms-transform-origin: right center;
+	transform-origin: right center;
+}
+
+.check.push:checked ~ .gatefold::before {
+	-webkit-transform: perspective(1500px) rotateY(50deg);
+	transform: perspective(1500px) rotateY(80deg);
+}
+.check.push:checked ~ .gatefold::after {
+	-webkit-transform: perspective(1500px) rotateY(-50deg);
+	transform: perspective(1500px) rotateY(-80deg);
+}
+
+.check.pull:checked ~ .gatefold::before {
+	-webkit-transform: perspective(1500px) rotateY(-80deg);
+	transform: perspective(1500px) rotateY(-85deg);
+}
+.check.pull:checked ~ .gatefold::after {
+	-webkit-transform: perspective(1500px) rotateY(80deg);
+	transform: perspective(1500px) rotateY(85deg);
+}
+/*--------------------------- 
+         header
+---------------------------*/
+#header {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+/*-- header を開いたときにフェードイン --*/
+#header {
+animation: fadeIn 3s ease 0s 1 normal;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: -100px;
+  }
+  
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+/*-- header を開いたときにフェードイン   ここまで --*/
+
+.header-logo {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.header-item {
+  font-size: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+  }
+
+  .header-list {
+      margin-top: 0;
+  }
+
+  .header-item {
+      margin-left: 2.5rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .header-logo{
+    font-size: 2rem;
+  }
+  .header nav a{
+    font-size: 0.9rem;
+  }
+}
+/*--------------------------- 
+        firstview
+---------------------------*/
+.firstview {
+  height: 100vh;
+}
+
+.firstview-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  height: 80%;
+  letter-spacing: 0.3rem;
+}
+@media screen and (min-width: 768px) {
+  .firstview-message {
+      font-size: 5.5rem;
+      letter-spacing: 0.5rem;
+  }
+}
+
+
+/*==============================================
+少し上からフェードインしてアニメーションするテキスト(CSSのみ)
+       firstview
+===============================================*/
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
+
+.animate span:nth-of-type(2) {
+  animation-delay: .05s;
+}
+
+.animate span:nth-of-type(3) {
+  animation-delay: .1s;
+}
+
+.animate span:nth-of-type(4) {
+  animation-delay: .15s;
+}
+
+.animate span:nth-of-type(5) {
+  animation-delay: .2s;
+}
+
+.animate span:nth-of-type(6) {
+  animation-delay: .25s;
+}
+
+.animate span:nth-of-type(7) {
+  animation-delay: .3s;
+}
+
+.animate span:nth-of-type(8) {
+  animation-delay: .35s;
+}
+
+.animate span:nth-of-type(9) {
+  animation-delay: .4s;
+}
+
+.animate span:nth-of-type(10) {
+  animation-delay: .45s;
+}
+
+.animate span {
+  opacity: 0;
+  /* transform: translate(-300px, 0) scale(0); */
+  transform: translate(0, -300px) scale(0);
+  text-shadow: #88cbf1 3px 3px;
+  animation: sideSlide 2s forwards;
+}
+
+@keyframes sideSlide {
+  60% {
+      transform: translate(20px, 0) scale(1);
+      color: rgb(227, 216, 216);
+  }
+
+  80% {
+      transform: translate(20px, 0) scale(1);
+      color: rgb(125, 123, 123);
+  }
+
+  99% {
+      transform: translate(0) scale(1.3);
+      color: rgb(62, 61, 61);
+  }
+
+  100% {
+      transform: translate(0) scale(1);
+      opacity: 1;
+      color: #000;
+
+  }
+}
+
+/*--------------------------- 
+        about(me)
+---------------------------*/
+.about .img{
+  width: 100%;
+  margin: auto 0;
+}
+.about img{
+  width: 100%;
+  border-radius: 50%;
+  filter: drop-shadow(10px 10px 10px rgba(0,0,0,0.6));
+  /* height: 600px; */
+}
+
+.about .text_wrapper{
+  margin: 40px auto 0;
+  line-height: 1.3;
+  text-align-last: left;
+}
+.about .greeting_wrapper .text{
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+.about .career_wrapper{
+  margin-top: 20px;
+}
+.about .career_wrapper .text{
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+.about .other_wrapper{
+  margin-top: 20px;
+}
+.about .other_wrapper .text{
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .about .container {
+    display: flex;
+    gap: 30px;
+    width: 80%;
+  }
+  .about .img{
+    margin-top: 0;
+    width: 50%;
+  }
+  .about img{
+    width: 100%;
+  }
+  .about .text_wrapper{
+    margin-top: 0;
+    width: 50%;
+    text-align: left;
+  }
+  .about .greeting_wrapper .text{
+    font-size: 0.8rem;
+  }
+  .about .career_wrapper .text{
+    font-size: 0.8rem;
+  }
+  .about .other_wrapper .text{
+    font-size: 0.8rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .about .greeting_wrapper .text{
+    font-size: 1rem;
+  }
+  .about .career_wrapper .text{
+    font-size: 1rem;
+  }
+  .about .other_wrapper .text{
+    font-size: 1rem;
+  }
+}
+/*====================================
+====　ランダムにテキスト出現する(JS)　====
+====================================*/
+.TextRandomAnime span {
+  opacity: 0;
+}
+
+.TextRandomAnime.appearRandomtext span {
+  /* animation: text_randomanime_on .5s ease-out forwards; */
+  animation: text_randomanime_on 5s ease-out forwards;
+}
+
+@keyframes text_randomanime_on {
+  0% {
+      opacity: 0;
+  }
+
+  100% {
+      opacity: 1;
+  }
+}
+
+.TextRandomAnime.appearRandomtext span:nth-child(2n) {
+  /* animation-delay: .5s; */
+  animation-delay: .5s;
+  /* spanのついた2の倍数の文字列の変化を0.5秒遅らせる*/
+}
+
+.TextRandomAnime.appearRandomtext span:nth-child(3n+1) {
+  /* animation-delay: .15s; */
+  animation-delay: 1.15s;
+  /* spanのついた3の倍数＋1の文字列の変化を0.15秒遅らせる*/
+}
+
+
+/*--------------------------- 
+        skills
+---------------------------*/
+.skills{
+  margin-top: 200px;
+}
+.skills .skills_text{
+  /* width: 80%; */
+}
+.skills .skills_text{
+  /* max-width: 1024px; */
+  text-align: center;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  margin: 40px auto 0;
+}
+
+.skills .img{
+  width: 100%;
+  margin-top: 20px;
+}
+.skills img{
+  width: 100%;
+}
+.skills .skill-item{
+  margin-top: 70px;
+}
+.skills .skill-item .description{
+  font-size: 1.1rem;
+}
+
+/*--      fade_in      --*/
+.fade_in {
+  opacity: 0;
+  transform: translate(0, 80px);
+  transition: all 1s;
+}
+
+/* jsでこのクラスを追加 */
+.scroll_in {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .skills .skill-list {
+    width: 100%;
+      margin: 0 auto 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6%;
+      row-gap: 20px;
+      padding-left: 50px;
+      padding-right: 50px;
+  }
+
+  .skill-item {
+      width: 47%;
+  }
+  .skills .skill-item .description{
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .skill-list {
+      max-width: 100%;
+  }
+}
+
+/*--------------------------- 
+        works
+---------------------------*/
+.works {
+  display: none;
+}
+
+.works {
+  max-width: 900px;
+  margin: 120px auto 0;
+}
+
+.work-list {
+  margin-top: 60px;
+}
+
+.work-item {
+  margin-top: 45px;
+}
+
+.work-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.work-image {}
+
+.work-image img {
+  width: 100%;
+}
+
+.work-text {
+  margin-top: 2rem;
+  padding: 0 16px;
+}
+.work-desc {
+  margin-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .work-item {
+      display: flex;
+      gap: 0 50px;
+  }
+
+  .work-image {
+      width: 50%;
+  }
+
+  .work-text {
+      width: 50%;
+      padding: 0;
+  }
+
+}
+
+/*--------------------------- 
+        contact
+---------------------------*/
+.contact {
+  margin: 120px 0;
+  text-align: center;
+}
+
+.contact-text {
+  margin-top: 60px;
+}
+
+.contact .contact-mail{
+  font-size: 1.5rem;
+}
+
+.contact-message {}
+
+.contact-mail {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.icon-area {
+  margin-top: 30px;
+}
+
+.icon-area .fab {
+  font-size: 2rem;
+  margin: 0 1rem;
+}
+
+/*--------------------------- 
+        footer
+---------------------------*/
+.footer {
+  background-color: #ddd;
+  padding: 30px 40px;
+
+}
+
+.footer-list {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.footer-item {
+  font-size: 1.2rem;
+}
+
+.copyright {
+  margin-top: 2rem;
+  text-align: center;
+}
